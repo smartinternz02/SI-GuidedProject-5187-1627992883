@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plasma
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: plasma
+  template:
+    metadata:
+      labels:
+        app: plasma
+    spec:
+      containers:
+        - name: back-end
+          image: public.ecr.aws/w5p2o8a7/plasma:latest
+          ports:
+            - containerPort: 8080
